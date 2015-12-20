@@ -86,7 +86,8 @@ void Timer::begin(unsigned long int Periodo){
 				TA1CCR0 = F_CPU / Periodo;
 
 		TA1CTL |= TASSEL_2 | MC_1 | TACLR;   // Clock TIMERA from SMCLK, run in up mode counting from to 0-TA1CCR0
-
+		/// impostato il periodo del timer
+		T = TA1CCR0;
 	break;
 
 	case 1:
@@ -103,7 +104,8 @@ void Timer::begin(unsigned long int Periodo){
 				TA2CCR0 = F_CPU / Periodo;
 
 		TA2CTL |= TASSEL_2 | MC_1 | TACLR;   // Clock TIMERA from SMCLK, run in up mode counting from to 0-TA1CCR0
-
+		// impostato il periodo del timer
+		T = TA2CCR0;
 	break;
 
 	case 2:
@@ -115,11 +117,14 @@ void Timer::begin(unsigned long int Periodo){
 		else if (divisore > 65535){
 			TB0CTL |= ID_3;
 			TB0CCR0 = divisore / 8;
+
 		}
 			else
 				TB0CCR0 = F_CPU / Periodo;
 
 		TB0CTL |= TBSSEL_2 | MC_1 | TBCLR;   // Clock TIMERA from SMCLK, run in up mode counting from to 0-TA1CCR0
+		/// impostato il periodo del timer
+		T = TB0CCR0;
 
 	break;
 

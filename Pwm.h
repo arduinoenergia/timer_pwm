@@ -23,7 +23,7 @@ public:
 
 private:
 	/// proprties
-	uint16_t F_PWM;
+	uint16_t T_PWM;
 };
 
 class Pwm : public Timer {
@@ -32,6 +32,8 @@ public:
 	virtual ~Pwm(){ this->~Timer();}
 	void pinSetting(uint8_t pin);
 	void begin(unsigned long int);
+	void pinValue(uint8_t pin, float value);
+
 };
 
 #endif /* PWM_H_ */

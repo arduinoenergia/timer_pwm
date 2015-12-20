@@ -11,9 +11,12 @@
 class Timer {
 public:
 	Timer();
+	/// richiede il periodo del timer
 	void begin(unsigned long int);
 	void stop();
+	/// collega la routine di servizio gestita ad interruzione
 	void attach(void (*)());
+	/// abilita la generazione del segnale di interruzione
 	void enableInt();
 
 	virtual ~Timer();
@@ -30,6 +33,8 @@ protected:
 
 	/// e non in questo modo:  void (*isr)()[3]
 	unsigned char m_whoAmI;
+	/// periodo del timer
+	unsigned int T;
 
 };
 
